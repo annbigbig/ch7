@@ -12,7 +12,7 @@ public class PointcutsUnionExample {
 		FruitsStaticPointcut pc1 = new FruitsStaticPointcut();
 		SportStaticPointcut pc2 = new SportStaticPointcut();
 		
-		//注意這裡，pc3是pc1h和pc2的union
+		//注意這裡，pc3是pc1和pc2的union
 		Pointcut pc3 = Pointcuts.union(pc1, pc2);
 		Advisor advisor = new DefaultPointcutAdvisor(pc3,new SimpleBeforeAdvice());
 		

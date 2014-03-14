@@ -9,7 +9,8 @@ import org.springframework.aop.support.StaticMethodMatcherPointcut;
 
 public class SportStaticPointcut  extends StaticMethodMatcherPointcut {
 
-	@Override
+	//當target物件的函式名是run和jump的時候，返回true，否則返回false
+	//-- return true when the name of the method of target object is 'run' or 'jump' , otherwise return false
 	public boolean matches(Method method, Class<?> cls) {
 		List<String> list = new ArrayList<String>();
 		list.add(new String("run"));
@@ -23,6 +24,8 @@ public class SportStaticPointcut  extends StaticMethodMatcherPointcut {
 		return false;
 	}
 
+	//當target物件的類別型態是BeanTwo.class時，返回true，否則返回false
+	//-- return true when the Class type of the target object is BeanTwo.class , otherwise return false
 	public ClassFilter getClassFilter() {
         return new ClassFilter() {
             public boolean matches(Class<?> cls) {
