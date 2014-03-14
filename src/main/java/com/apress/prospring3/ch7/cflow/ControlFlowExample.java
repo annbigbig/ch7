@@ -23,6 +23,8 @@ public class ControlFlowExample {
         TestBean target = new TestBean();
 
         // create advisor
+        //只有在ControlFlowExample類別的test函式呼叫時，才會為target物件的某函式套用上advice
+        //Target method will be advised only when the caller is come from ControlFlowExample.test()
         Pointcut pc = new ControlFlowPointcut(ControlFlowExample.class, "test");
         Advisor advisor = new DefaultPointcutAdvisor(pc,
                 new SimpleBeforeAdvice());
