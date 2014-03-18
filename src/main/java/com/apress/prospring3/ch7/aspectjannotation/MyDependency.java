@@ -19,7 +19,7 @@ public class MyDependency {
         System.out.println("bar()");
     }
     
-    public void tony(int intValue){
-    	 System.out.println("tony(int): " + intValue);
+    public void tony(){
+    	 System.out.println("tony(): ");
     }
 }

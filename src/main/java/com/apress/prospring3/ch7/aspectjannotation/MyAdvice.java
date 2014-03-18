@@ -29,8 +29,8 @@ public class MyAdvice {
 	public void inMyDependency() {
 	}
 	
-	@Pointcut("execution(* com.apress.prospring3.ch7..tony*(int)) && args(intValue)")
-	public void tonyExecution(int intValue){
+	@Pointcut("execution(* com.apress.prospring3.ch7.aspectjannotation.MyDependency.*())")
+	public void tonyExecution(){
 		
 	}
 	
@@ -47,9 +47,9 @@ public class MyAdvice {
 		}
 	}
 	
-	@Before("tonyExecution(intValue)")
-	public void forTonyAdvice(JoinPoint joinPoint,int intValue){
-		System.out.println("Executing : forTonyAdvice() " + intValue);
+	@Before("tonyExecution()")
+	public void forTonyAdvice(JoinPoint joinPoint){
+		System.out.println("Executing : forTonyAdvice() ");
 	}
 	
 	//@Around("fooExecution(intValue) && inMyDependency()")
