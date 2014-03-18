@@ -13,15 +13,24 @@ import org.aspectj.lang.ProceedingJoinPoint;
 public class MyAdvice {
 
 	// For simple joinpoint retrieval
-    /*
+	/*
 	public void simpleBeforeAdvice(JoinPoint joinPoint) {
 		System.out.println("Executing: " + joinPoint.getSignature().getDeclaringTypeName() + " " 
 	        + joinPoint.getSignature().getName());
 	}
 	*/
 	
+	/*
+	public void simpleBeforeAdvice(int intValue){
+		if(intValue!=100){
+			System.out.println("Executing: intValue=" + intValue);
+		}
+	}
+	*/
+	
+	
 	// For both joinpoint and argument retrieval
-	public void simpleBeforeAdvice(JoinPoint joinPoint, int intValue) {
+	public void simpleBeforeAdvice(JoinPoint joinPoint,int intValue) {
 		
 		if (intValue != 100) {
 		    System.out.println("Executing: " + joinPoint.getSignature().getDeclaringTypeName() + " " 
@@ -43,6 +52,10 @@ public class MyAdvice {
 	            + " argument: " + intValue);	    
 	    
 	    return retVal;
+	}
+	
+	public void testAdvice(JoinPoint joinPoint){
+		System.out.println("From testAdvice() :" + joinPoint.getSignature().getDeclaringTypeName() + "  " + joinPoint.getSignature().getName());
 	}
 	
 }

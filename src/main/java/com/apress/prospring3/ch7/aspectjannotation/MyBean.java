@@ -18,6 +18,7 @@ public class MyBean {
     	myDependency.foo(100);
     	myDependency.foo(101);
     	myDependency.bar();
+    	myDependency.tony(202);
     }
     
     @Autowired

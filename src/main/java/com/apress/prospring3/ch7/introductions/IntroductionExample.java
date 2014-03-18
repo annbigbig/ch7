@@ -23,6 +23,8 @@ public class IntroductionExample {
         ProxyFactory pf = new ProxyFactory();
         pf.setTarget(target);
         pf.addAdvisor(advisor);
+        //設定為true才會使用CGLIB proxy，從工廠取出的proxy才會既是TargetBean又同時是isModified (代理的是類別和接口兩者)
+        //書上是這麼寫，但我設定成false之後，取出的proxy一樣既是TargetBean又同時是isModified
         pf.setOptimize(true);
         
         TargetBean proxy = (TargetBean)pf.getProxy();

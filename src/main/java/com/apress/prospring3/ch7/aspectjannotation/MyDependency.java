@@ -18,4 +18,8 @@ public class MyDependency {
     public void bar() {
         System.out.println("bar()");
     }
+    
+    public void tony(int intValue){
+    	 System.out.println("tony(int): " + intValue);
+    }
 }

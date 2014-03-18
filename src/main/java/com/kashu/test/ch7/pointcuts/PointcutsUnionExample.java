@@ -32,6 +32,7 @@ public class PointcutsUnionExample {
         proxyOne.apple();
         proxyOne.banana();
         proxyOne.hello();
+        
         proxyTwo.jump();
         proxyTwo.run();
         proxyTwo.sleep();

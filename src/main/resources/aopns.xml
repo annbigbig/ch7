@@ -8,17 +8,23 @@
     <aop:config> 
         
         <!-- Sample for simple pointcut -->
-<!--
-        <aop:pointcut id="fooExecution" expression="execution(* com.apress.prospring3.ch7..foo*(int))"/>
--->
+        <!-- 
+        <aop:pointcut id="fooExecution" expression="execution(* com.apress.prospring3.ch7.aopns..foo*(int))"/>
+		-->
 
         <!-- Sample for pointcut with bean name checking and parameter passing -->
+        <!-- 
         <aop:pointcut id="fooExecution" expression="execution(* foo*(int)) 
             and args(intValue) and bean(myDependency*)"/>
+        -->
+        <aop:pointcut id="fooExecution" expression="execution(* com.apress.prospring3.ch7.aopns.MyDependency.foo(int)) 
+            and args(intValue) and bean(myDependency*)"/>
+   		<aop:pointcut id="barExecution" expression="execution(* com.apress.prospring3.ch7.aopns.MyDependency.bar()) and bean(myDepen*)"/>
    
         <aop:aspect ref="advice">
-            <aop:before pointcut-ref="fooExecution" method="simpleBeforeAdvice"/>         
-            <aop:around pointcut-ref="fooExecution" method="simpleAroundAdvice"/>  
+            <aop:before pointcut-ref="fooExecution" method="simpleBeforeAdvice"/>
+             <aop:around pointcut-ref="fooExecution" method="simpleAroundAdvice"/>
+             <aop:before pointcut-ref="barExecution" method="testAdvice"/>
         </aop:aspect>
         
     </aop:config>
