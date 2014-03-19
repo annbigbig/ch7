@@ -24,7 +24,7 @@ public class MyAdvice {
 	public void fooExecution(int intValue) {
 	}
 	
-	//羚羊七百拿掉下面這行的注解會出錯
+	//羚羊七百拿掉下面這行的注解會出錯，這是因為這個專案支援AspectJ，可是下面這種寫法不被AspectJ支援，解決方法請看Page265
 	//@Pointcut("bean(myDependency*)")
 	public void inMyDependency() {
 	}

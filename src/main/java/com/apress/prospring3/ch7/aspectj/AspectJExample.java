@@ -15,8 +15,14 @@ public class AspectJExample {
     	ctx.load("classpath:aspectj.xml");
     	ctx.refresh();
     	
+    	/*
         MessageWriter writer = new MessageWriter();
         writer.writeMessage();
+        writer.foo();
+        */
+    	
+    	MessageWriter writer = (MessageWriter)ctx.getBean("writer");
+    	writer.writeMessage();
         writer.foo();
         
     }

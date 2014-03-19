@@ -12,4 +12,6 @@
             <value>Ho Ho!</value>
         </property>
     </bean>
+    
+    <bean id="writer" class="com.apress.prospring3.ch7.aspectj.MessageWriter"/>
 </beans>
