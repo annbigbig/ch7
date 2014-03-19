@@ -15,7 +15,7 @@ public class DoBeforeAspect {
 		
 	}
 	
-	@Pointcut("execution(* com.kashu.test.aop.SimpleService.sayHello(..)) && args(message,..)")
+	@Pointcut("execution(* com.kashu.test.aop.SimpleService.sayHello(String)) && args(message)")
 	public void pointcutB(String message){
 		
 	}
