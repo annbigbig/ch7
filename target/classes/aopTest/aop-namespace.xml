@@ -11,15 +11,25 @@
 	<bean id="advices" class="com.kashu.test.aop.xmlconfig.MyAdvices"/>
  
 	<aop:config>
-		<aop:pointcut id="pointcut1" expression="execution(* com.kashu.test.aop.xmlconfig.SimpleService.sayHello(..)) and args(message)"/>
+		<!-- 套用advice於指定包指定接口的sayHello函式，並將String型態的message參數傳給advice (這會影響到advice函式宣告時所帶的參數數量)-->
+		<aop:pointcut id="pointcut1" expression="execution(* com.kashu.test.aop.xmlconfig.SimpleService.sayHello(String)) and args(message)"/>
+		<!-- 套用advice於指定包指定接口的sayHello函式，不會傳遞參數給advice -->
 		<aop:pointcut id="pointcut2" expression="execution(* com.kashu.test.aop.xmlconfig.SimpleService.sayHello(..))"/>
+		<!-- 套用advice於指定包指定接口的名稱以check開頭的函式，不會傳遞參數給advice -->
 		<aop:pointcut id="pointcut3" expression="execution(* com.kashu.test.aop.xmlconfig.SimpleService.check*(..))"/>
+		<!-- 套用advice於所有名稱以print開頭的函式 ，不會傳遞參數給advice-->
 		<aop:pointcut id="pointcut4" expression="execution(* print*(..))"/>
+		<!-- 套用advice於指定包指定接口的所有函式 ，不會傳遞參數給advice-->
+		<aop:pointcut id="pointcut5" expression="execution(* com.kashu.test.aop.xmlconfig.SimpleService.*(..))"/>
 		
 		<aop:aspect id="myAspect" ref="advices">
 				<aop:before pointcut-ref="pointcut1" method="doBefore"/>
+				<aop:before pointcut-ref="pointcut5" method="showMethodDetail"/>
+				<!-- doAfter函式沒有message參數，請用pointcut2，否則會出錯 -->
 				<aop:after pointcut-ref="pointcut2" method="doAfter"/>
 				<aop:after-returning pointcut-ref="pointcut1" method="doAfterReturning" returning="result"/>
+				<aop:after-throwing pointcut-ref="pointcut3" method="doAfterThrowing" throwing="error"/>
+				<aop:around pointcut-ref="pointcut2" method="doAround"/>
 		</aop:aspect>
 	</aop:config>
 	

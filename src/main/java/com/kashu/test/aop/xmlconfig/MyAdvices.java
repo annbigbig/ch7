@@ -35,4 +35,8 @@ public class MyAdvices {
 		System.out.println("Exception : " + error);
 		System.out.println("******");	 
 	 }
+	
+	public void showMethodDetail(JoinPoint joinPoint){
+		System.out.println("***AspectJ*** showMethodDetail() is running!! intercepted : " + joinPoint.getSignature().getName() );
+	}
 }
